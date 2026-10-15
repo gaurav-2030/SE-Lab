@@ -9,7 +9,7 @@
 
 | File | Description |
 |------|-------------|
-| `before_changes.mp4` | 10 s of gameplay before any changes. The HUD height climbs to 81m, then drops to 62m when the climber falls back down (the bug). |
+| `before_changes.mp4` | 10 s of gameplay before any changes. Shows the bug: the HUD height drops whenever the climber moves down. It dips during ordinary jumps (e.g. 41m → 40m, 64m → 62m), and after peaking at 88m it falls to 62m when the climber drops back down. |
 | `after_changes.mp4` | 10 s of gameplay on the same level after all changes. Shows the platform colour gradient, moving platforms, coin sparkles with "+50 / combo" popups, the combo counter, and the height holding at its peak (108m) after a fall. |
 | `code/game.py` | Updated game code |
 | `code/README.md` | Assignment README with a "Changes Made" section |
