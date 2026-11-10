@@ -16,7 +16,7 @@ def add_task(title, priority="medium", labels=None):
     ``labels`` defaults to ``None`` instead of ``[]`` so that no list is
     shared between calls; a fresh list is built for each task.
     """
-    task_id=len(tasks) + 1
+    task_id = len(tasks) + 1
     task_labels = list(labels) if labels else []
     task_labels.append(priority)
     tasks[task_id] = {"title": title, "priority": priority, "done": False,
@@ -51,7 +51,6 @@ def find_task(keyword):
         if keyword.lower() in task["title"].lower():
             return task_id
     return None
-
 
 
 def save_tasks(file_name="tasks_store.json"):
@@ -108,12 +107,12 @@ def main():
     complete_task(99)
     print("Pending tasks:", pending_tasks())
     print("Task id for 'plumber':", find_task("plumber"))
-    print("Task id for 'gym':", find_task("gym")) # returns None
+    print("Task id for 'gym':", find_task("gym"))  # None, no match
     suggestion = secrets.choice(pending_tasks())
     print("Try this next:", suggestion)
     save_tasks()
     restored = load_tasks()
-    print("Tasks restored from file:",len(restored))
+    print("Tasks restored from file:", len(restored))
     export_json()
     print("Exported tasks to tasks.json")
 
