@@ -1,10 +1,10 @@
 """To-do list and task manager for the Lab 5 static analysis exercise."""
 
 import json
-import os
-import pickle
-import random
+import secrets
+import smtplib
 from datetime import datetime
+from email.message import EmailMessage
 
 tasks = {}
 PRIORITY_ORDER = {"high": 0, "medium": 1, "low": 2}
@@ -54,16 +54,25 @@ def find_task(keyword):
 
 
 
-def save_tasks(file_name="tasks.pkl"):
-    """Write every task to *file_name*."""
-    with open(file_name, "wb") as handle:
-        pickle.dump(tasks, handle)
+def save_tasks(file_name="tasks_store.json"):
+    """Write every task to *file_name* as JSON.
+
+    JSON is a data-only format, so reloading a store file can never
+    execute code the way an unpickled file can.
+    """
+    with open(file_name, "w", encoding="utf-8") as handle:
+        json.dump(tasks, handle, indent=2)
 
 
-def load_tasks(file_name="tasks.pkl"):
-    """Read and return the tasks stored in *file_name*."""
-    with open(file_name, "rb") as handle:
-        return pickle.load(handle)
+def load_tasks(file_name="tasks_store.json"):
+    """Read and return the tasks stored in *file_name*.
+
+    JSON object keys are always strings, so the task ids are converted
+    back to integers to keep the in-memory shape unchanged.
+    """
+    with open(file_name, "r", encoding="utf-8") as handle:
+        stored = json.load(handle)
+    return {int(task_id): task for task_id, task in stored.items()}
 
 
 def export_json(file_name="tasks.json"):
@@ -72,9 +81,21 @@ def export_json(file_name="tasks.json"):
         json.dump(tasks, handle, indent=2)
 
 
-def remind_by_email(address):
-    """Email the exported task list to *address*."""
-    os.system("mail -s 'Pending tasks' " + address + " < tasks.json")
+def remind_by_email(address, host="localhost", port=25):
+    """Mail the pending task list to *address* through an SMTP relay.
+
+    No shell is involved, so the address can no longer be used to inject
+    a command. It is validated first to rule out header injection.
+    """
+    if "@" not in address or "\r" in address or "\n" in address:
+        raise ValueError("not a usable email address")
+    message = EmailMessage()
+    message["Subject"] = "Pending tasks"
+    message["From"] = "todo-manager@localhost"
+    message["To"] = address
+    message.set_content("\n".join(pending_tasks()))
+    with smtplib.SMTP(host, port) as relay:
+        relay.send_message(message)
 
 
 def main():
@@ -88,7 +109,7 @@ def main():
     print("Pending tasks:", pending_tasks())
     print("Task id for 'plumber':", find_task("plumber"))
     print("Task id for 'gym':", find_task("gym")) # returns None
-    suggestion = random.choice(pending_tasks())
+    suggestion = secrets.choice(pending_tasks())
     print("Try this next:", suggestion)
     save_tasks()
     restored = load_tasks()
