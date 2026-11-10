@@ -11,6 +11,7 @@ Software Engineering Lab submissions.
 | [Lab-3](Lab-3) | Architecture justification (Microservices) + component diagram — common team submission |
 | [Lab-4](Lab-4/Gaurav_Girish_PES1UG24AM103) | VibeCoding (Climber repair) — before/after videos, updated code, chat history |
 | [Lab-5](Lab-5/Gaurav_Girish_PES1UG24AM103) | Static code analysis (Pylint, Bandit, Flake8) — cleaned program, issue table, reflection, before/after reports |
+| [Lab-6](Lab-6/Gaurav_Girish_PES1UG24AM103) | Code and branch coverage (coverage, pytest) — 100% line and 100% branch coverage, both test suites, terminal screenshots, analysis |
 
 ## Team
 | Name | SRN |
