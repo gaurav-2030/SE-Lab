@@ -1,0 +1,12 @@
+gaurav@Gauravs-MacBook-Air SE_Lab7_Fuzzing % python3 -m pytest test_irrigation_scheduler.py
+================================= test session starts ==================================
+platform darwin -- Python 3.13.0, pytest-9.2.0, pluggy-1.7.0
+rootdir: /Users/gaurav/Desktop/SE_Lab7_Fuzzing
+plugins: hypothesis-6.170.15, anyio-4.15.1
+collected 59 items
+
+test_irrigation_scheduler.py ................................................... [ 86%]
+........                                                                         [100%]
+
+================================== 59 passed in 0.87s ==================================
+gaurav@Gauravs-MacBook-Air SE_Lab7_Fuzzing % 

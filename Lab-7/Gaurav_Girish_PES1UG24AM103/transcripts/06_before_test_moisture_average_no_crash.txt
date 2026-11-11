@@ -1,0 +1,66 @@
+gaurav@Gauravs-MacBook-Air before % python3 -m pytest test_irrigation_scheduler.py::test_moisture_average_no_crash
+================================= test session starts ==================================
+platform darwin -- Python 3.13.0, pytest-9.2.0, pluggy-1.7.0
+rootdir: /Users/gaurav/Desktop/SE_Lab7_Fuzzing/before
+plugins: hypothesis-6.170.15, anyio-4.15.1
+collected 1 item
+
+test_irrigation_scheduler.py F                                                   [100%]
+
+======================================= FAILURES =======================================
+____________________________ test_moisture_average_no_crash ____________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/test_irrigation_scheduler.py", line 232, in test_moisture_average_no_crash
+  |     def test_moisture_average_no_crash(s):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/test_irrigation_scheduler.py", line 234, in test_moisture_average_no_crash
+    |     outcome, value = _call(moisture_average, s)
+    |                      ~~~~~^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/test_irrigation_scheduler.py", line 169, in _call
+    |     raise AssertionError(
+    |     ...<5 lines>...
+    |     ) from None
+    | AssertionError: moisture_average() crashed instead of rejecting its input
+    |   exception : TypeError: a bytes-like object is required, not 'str'
+    |   input     : b''
+    | Failing test case: test_moisture_average_no_crash(
+    |     s=b'',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/test_irrigation_scheduler.py", line 234, in test_moisture_average_no_crash
+    |     outcome, value = _call(moisture_average, s)
+    |                      ~~~~~^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/test_irrigation_scheduler.py", line 169, in _call
+    |     raise AssertionError(
+    |     ...<5 lines>...
+    |     ) from None
+    | AssertionError: moisture_average() crashed instead of rejecting its input
+    |   exception : ValueError: invalid literal for int() with base 10: ''
+    |   input     : ''
+    | Failing test case: test_moisture_average_no_crash(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/test_irrigation_scheduler.py", line 234, in test_moisture_average_no_crash
+    |     outcome, value = _call(moisture_average, s)
+    |                      ~~~~~^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/test_irrigation_scheduler.py", line 169, in _call
+    |     raise AssertionError(
+    |     ...<5 lines>...
+    |     ) from None
+    | AssertionError: moisture_average() crashed instead of rejecting its input
+    |   exception : AttributeError: 'NoneType' object has no attribute 'split'
+    |   input     : None
+    | Failing test case: test_moisture_average_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+=============================== short test summary info ================================
+FAILED test_irrigation_scheduler.py::test_moisture_average_no_crash - ExceptionGroup:...
+================================== 1 failed in 0.11s ===================================
+gaurav@Gauravs-MacBook-Air before % 

@@ -1,0 +1,18 @@
+gaurav@Gauravs-MacBook-Air before % python3 irrigation_scheduler.py
+==== Running parse_zone ====
+Enter zone:area in m2 (e.g. north:120): north:120
+Zone and Area: ('North', 120.0)
+
+==== Running moisture_average ====
+Enter moisture readings as CSV (e.g. 40,35,50): 1,,3
+Traceback (most recent call last):
+  File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/irrigation_scheduler.py", line 31, in <module>
+    main()
+    ~~~~^^
+  File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/irrigation_scheduler.py", line 22, in main
+    result = moisture_average(user_input)
+  File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/irrigation_scheduler.py", line 6, in moisture_average
+    values = [int(r) for r in readings_csv.split(',')]
+              ~~~^^^
+ValueError: invalid literal for int() with base 10: ''
+gaurav@Gauravs-MacBook-Air before % 

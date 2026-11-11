@@ -1,0 +1,14 @@
+gaurav@Gauravs-MacBook-Air before % python3 irrigation_scheduler.py
+==== Running parse_zone ====
+Enter zone:area in m2 (e.g. north:120): north
+Traceback (most recent call last):
+  File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/irrigation_scheduler.py", line 31, in <module>
+    main()
+    ~~~~^^
+  File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/irrigation_scheduler.py", line 17, in main
+    result = parse_zone(user_input)
+  File "/Users/gaurav/Desktop/SE_Lab7_Fuzzing/before/irrigation_scheduler.py", line 2, in parse_zone
+    name, area = text.split(':')
+    ^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+gaurav@Gauravs-MacBook-Air before % 
